@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Arithmetic Operations</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-$END$
+
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+
+<div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm">
+  <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">
+    Arithmetic Operations
+  </h1>
+
+  <form action="arithmetic" method="post" class="space-y-4">
+    <input type="number" name="a" placeholder="Number 1" required
+           class="w-full px-4 py-2 border rounded-lg"/>
+
+    <input type="number" name="b" placeholder="Number 2" required
+           class="w-full px-4 py-2 border rounded-lg"/>
+
+    <div class="grid grid-cols-2 gap-3">
+      <button name="op" value="add"
+              class="bg-green-600 text-white py-2 rounded-lg">
+        Add
+      </button>
+
+      <button name="op" value="sub"
+              class="bg-blue-600 text-white py-2 rounded-lg">
+        Subtract
+      </button>
+
+      <button name="op" value="mul"
+              class="bg-purple-600 text-white py-2 rounded-lg">
+        Multiply
+      </button>
+
+      <button name="op" value="div"
+              class="bg-red-600 text-white py-2 rounded-lg">
+        Divide
+      </button>
+    </div>
+  </form>
+</div>
+
 </body>
 </html>

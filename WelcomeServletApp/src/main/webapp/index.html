@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Welcome Servlet</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-$END$
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+
+<div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm text-center">
+    <h1 class="text-2xl font-bold text-indigo-600 mb-6">
+        Welcome Servlet
+    </h1>
+
+    <form action="welcome" method="post" class="space-y-4">
+        <input type="text" name="name" placeholder="Enter your name"
+               required
+               class="w-full px-4 py-2 border rounded-lg"/>
+
+        <button class="w-full bg-indigo-600 text-white py-2 rounded-lg">
+            Submit
+        </button>
+    </form>
+</div>
+
 </body>
 </html>

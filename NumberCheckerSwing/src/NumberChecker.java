@@ -45,6 +45,7 @@ public class NumberChecker extends JFrame {
         result.append("Even/Odd: ").append(num % 2 == 0 ? "Even" : "Odd").append("\n");
         result.append("Prime: ").append(isPrime(num) ? "Yes" : "No").append("\n");
         result.append("Palindrome: ").append(isPalindrome(num) ? "Yes" : "No").append("\n");
+        result.append("Armstrong: ").append(isArmstrong(num) ? "Yes" : "No").append("\n");
         resultArea.setText(result.toString());
     }
 
@@ -61,6 +62,15 @@ public class NumberChecker extends JFrame {
     private boolean isPalindrome(int n) {
         String s = String.valueOf(n);
         return s.equals(new StringBuilder(s).reverse().toString());
+    }
+
+    private boolean isArmstrong(int n) {
+        int original = n, sum = 0, digits = String.valueOf(n).length();
+        while (n > 0) {
+            sum += Math.pow(n % 10, digits);
+            n /= 10;
+        }
+        return sum == original;
     }
 
     public static void main(String[] args) {
