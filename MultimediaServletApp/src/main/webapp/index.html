@@ -2,35 +2,44 @@
 <html>
 <head>
   <title>Multimedia Servlet</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    body 
+    { 
+      font-family: Arial; 
+      margin: 20px; 
+    }
+    h1 
+    { 
+      color: blue; 
+    }
+    select 
+    { 
+      padding: 5px; 
+      margin: 5px 0; 
+      width: 200px; 
+    }
+    button 
+    { 
+      padding: 8px 20px; 
+      background-color: blue; 
+      color: white; 
+      border: none; 
+      cursor: pointer; 
+    }
+  </style>
 </head>
-
-<body class="min-h-screen flex items-center justify-center bg-gray-100">
-
-<div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm">
-  <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">
-    Multimedia Servlet
-  </h1>
-
-  <form action="media" method="post" class="space-y-4">
-
-    <label class="block font-medium text-gray-700">
-      Select Media Type
-    </label>
-
-    <select name="type" required
-            class="w-full px-4 py-2 border rounded-lg">
+<body>
+  <h1>Multimedia Servlet</h1>
+  <form action="media" method="post">
+    <label>Select Media Type</label><br>
+    <select name="type" required>
       <option value="">-- Select --</option>
       <option value="image">Image</option>
       <option value="audio">Audio</option>
       <option value="video">Video</option>
     </select>
-
-    <button class="w-full bg-indigo-600 text-white py-2 rounded-lg">
-      Show
-    </button>
+    <br>
+    <button type="submit">Show</button>
   </form>
-</div>
-
 </body>
 </html>

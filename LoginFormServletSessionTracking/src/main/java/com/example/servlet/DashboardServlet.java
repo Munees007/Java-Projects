@@ -1,9 +1,13 @@
 package com.example.servlet;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/dashboard")
 public class DashboardServlet extends HttpServlet {
@@ -19,66 +23,37 @@ public class DashboardServlet extends HttpServlet {
         }
 
         String user = session.getAttribute("user").toString();
+        
+        // Log the dashboard request
+        System.out.println("======== DASHBOARD SERVLET REQUEST ========");
+        System.out.println("User: " + user);
+        System.out.println("Request Type: GET /dashboard");
+        System.out.println("Timestamp: " + new java.util.Date());
+        System.out.println("===========================================");
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 
-        out.println("<!DOCTYPE html><html><head>");
+        out.println("<html><head>");
         out.println("<title>Dashboard</title>");
-        out.println("<script src='https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'></script>");
         out.println("</head>");
 
-        out.println("<body class='min-h-screen flex items-center justify-center bg-gray-100'>");
-        out.println("<div class='bg-white p-8 rounded-xl shadow-lg w-full max-w-sm text-center'>");
-
-        out.println("<h1 class='text-2xl font-bold text-indigo-600 mb-4'>Dashboard</h1>");
-        out.println("<p class='mb-4'>Welcome <b>" + user + "</b></p>");
+        out.println("<body>");
+        out.println("<h1>Dashboard</h1>");
+        out.println("<p>Welcome <b>" + user + "</b></p>");
+        out.println("<p>Auto logout in 5 seconds</p>");
 
         out.println("<form action='logout' method='post'>");
-        out.println("<button class='bg-red-600 text-white px-6 py-2 rounded-lg'>Logout</button>");
+        out.println("<button type='submit'>Logout</button>");
         out.println("</form>");
 
-        out.println("</div>");
         out.println("<script>");
-
-        out.println("let timeLeft = 5;");
-        out.println("let timer;");
-
-        out.println("const timerEl = document.createElement('p');");
-        out.println("timerEl.className = 'text-red-600 font-semibold mb-4';");
-        out.println("timerEl.id = 'timer';");
-        out.println("timerEl.innerText = 'Auto logout in ' + timeLeft + ' seconds';");
-        out.println("document.querySelector('div').insertBefore(timerEl, document.querySelector('form'));");
-
-        out.println("function startTimer() {");
-        out.println("  clearInterval(timer);");
-        out.println("  timeLeft = 5;");
-        out.println("  timerEl.innerText = 'Auto logout in ' + timeLeft + ' seconds';");
-
-        out.println("  timer = setInterval(() => {");
-        out.println("    timeLeft--;");
-
-        out.println("    if (timeLeft <= 0) {");
-        out.println("      clearInterval(timer);");
-        out.println("      fetch('logout', { method: 'POST' })");
-        out.println("        .then(() => window.location.href = 'index.html');");
-        out.println("    } else {");
-        out.println("      timerEl.innerText = 'Auto logout in ' + timeLeft + ' seconds';");
-        out.println("    }");
-        out.println("  }, 1000);");
-        out.println("}");
-
-        out.println("window.onload = startTimer;");
-        out.println("document.onmousemove = startTimer;");
-        out.println("document.onkeypress = startTimer;");
-        out.println("document.onclick = startTimer;");
-
+        out.println("setTimeout(function() {");
+        out.println("  fetch('logout', { method: 'POST' })");
+        out.println("    .then(() => window.location.href = 'index.html');");
+        out.println("}, 5000);");
         out.println("</script>");
 
-
         out.println("</body></html>");
-
-
-        out.println("</div></body></html>");
     }
 }

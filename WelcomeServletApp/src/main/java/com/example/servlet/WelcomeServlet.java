@@ -13,7 +13,7 @@ public class WelcomeServlet extends HttpServlet {
 
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-
+        System.out.println("Client: " + name);
         out.println("<h1 style='text-align:center;color:green;'>Welcome " + name + "!</h1>");
     }
 }

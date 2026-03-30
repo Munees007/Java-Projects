@@ -1,8 +1,13 @@
 package com.example.servlet;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -12,9 +17,20 @@ public class LoginServlet extends HttpServlet {
 
         String user = req.getParameter("username");
         String pass = req.getParameter("password");
+        
+        // Log the user request
+        System.out.println("======== LOGIN SERVLET REQUEST ========");
+        System.out.println("Username: " + user);
+        System.out.println("Request Type: POST /login");
+        System.out.println("Timestamp: " + new java.util.Date());
+        System.out.println("========================================");
 
         // simple validation (demo purpose)
         if (user.equals("Munees") && pass.equals("Munees@123")) {
+            
+            // Log successful login
+            System.out.println("Login Status: SUCCESS");
+            System.out.println("Session created for user: " + user);
 
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
@@ -24,7 +40,16 @@ public class LoginServlet extends HttpServlet {
 
             resp.sendRedirect("dashboard");
         } else {
-            resp.getWriter().println("Invalid Login");
+            // Log failed login
+            System.out.println("Login Status: FAILED - Invalid credentials");
+            
+            resp.setContentType("text/html");
+            PrintWriter out = resp.getWriter();
+            out.println("<html><body>");
+            out.println("<h2>Invalid Login</h2>");
+            out.println("<p>Username or password is incorrect!</p>");
+            out.println("<a href='index.html'>Go Back</a>");
+            out.println("</body></html>");
         }
     }
 }
