@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
 
@@ -26,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("========================================");
 
         // simple validation (demo purpose)
-        if (user.equals("Munees") && pass.equals("Munees@123")) {
+        if ("Munees".equals(user) && "Munees@123".equals(pass)) {
             
             // Log successful login
             System.out.println("Login Status: SUCCESS");

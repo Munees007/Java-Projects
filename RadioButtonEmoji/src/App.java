@@ -12,7 +12,7 @@ public class App extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        emojiLabel = new JLabel("😊", JLabel.CENTER);
+        emojiLabel = new JLabel("\uD83D\uDE0A", JLabel.CENTER);
         emojiLabel.setFont(new Font("Serif", Font.PLAIN, 100));
         add(emojiLabel, BorderLayout.CENTER);
 
@@ -42,10 +42,21 @@ public class App extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String cmd = e.getActionCommand();
                 switch (cmd) {
-                    case "Happy": emojiLabel.setText("😊"); break;
-                    case "Sad":   emojiLabel.setText("😢"); break;
-                    case "Cool":  emojiLabel.setText("😎"); break;
-                    case "Wink":  emojiLabel.setText("😉"); break;
+                    case "Happy":
+                        emojiLabel.setText("\uD83D\uDE0A");
+                        break;
+                    case "Sad":
+                        emojiLabel.setText("\uD83D\uDE22");
+                        break;
+                    case "Cool":
+                        emojiLabel.setText("\uD83D\uDE0E");
+                        break;
+                    case "Wink":
+                        emojiLabel.setText("\uD83D\uDE09");
+                        break;
+                    default:
+                        emojiLabel.setText("\uD83D\uDE0A");
+                        break;
                 }
             }
         };
@@ -59,6 +70,6 @@ public class App extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new App());
+        SwingUtilities.invokeLater(App::new);
     }
 }

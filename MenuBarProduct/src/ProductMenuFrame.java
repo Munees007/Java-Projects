@@ -47,7 +47,7 @@ public class ProductMenuFrame extends JFrame {
                     String selected = productList.getSelectedValue();
                     if (selected != null) {
                         double price = productMap.get(selected);
-                        priceLabel.setText("Price of " + selected + ": ₹" + price);
+                        priceLabel.setText("Price of " + selected + ": \u20B9" + price);
                     }
                 }
             }

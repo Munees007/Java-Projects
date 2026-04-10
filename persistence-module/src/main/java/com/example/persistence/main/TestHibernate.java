@@ -20,7 +20,7 @@ public class TestHibernate {
             session.save(s);
             session.getTransaction().commit();
 
-            System.out.println("✅ Data inserted successfully bro 🔥");
+            System.out.println("Data inserted successfully.");
 
         } catch (Exception e) {
             e.printStackTrace();

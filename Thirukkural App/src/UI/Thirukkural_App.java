@@ -13,7 +13,7 @@ public class Thirukkural_App extends JFrame {
     public Thirukkural_App() throws IOException
     {
         super();
-        setTitle("திருக்குறள் செயலி");
+        setTitle("\u0BA4\u0BBF\u0BB0\u0BC1\u0B95\u0BCD\u0B95\u0BC1\u0BB1\u0BB3\u0BCD \u0B9A\u0BC6\u0CAF\u0BB2\u0BBF");
         setSize(600,600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         BufferedImage logo = ImageIO.read(new File("Resources/Images/thiruvalluvar.png"));
